@@ -2,9 +2,9 @@
     "name": "Budget Transaction",
     "short_name": "Budgets",
     "display": "standalone",
-    "start_url": "./index.html",
+    "start_url": "../docs/index.html",
     "background-color": "#01579b",
-    "them_color": "#c5935a",
+    "them_color": "#317EFB",
     "icons": [
         {
             "src": "./icons/icon-72x72.png",
