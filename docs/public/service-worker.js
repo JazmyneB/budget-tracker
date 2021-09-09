@@ -1,7 +1,7 @@
 
 //Files to cache
 const FILES_TO_CACHE = [
-    "./../index.html",
+    "../index.html",
     "./css/styles.css",
     "./icons/icon-72x72.png",
     "./icons/icon-96x96.png",
