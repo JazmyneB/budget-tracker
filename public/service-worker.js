@@ -8,6 +8,28 @@ const APP_PREFIX = "Budgets-";
 const VERSION = "version_01";
 const CACHE_NAME = APP_PREFIX + VERSION;
 
+
+//Retrieve Information from Cache
+self.addEventListener('fetch', function(e) {
+    //logging URL of the requested resource
+    console.log('fetch request : ' + e.request.url)
+    //Intercep Fetch Request
+    e.respondWith(
+        //determine if the resource already exists in caches
+        caches.match(e.request).then(function (request) {
+            //if resource exists, log URL to console and return cached resource
+            if (request) {
+                console.log('responding with cache : ' + e.request.url)
+                return request
+            } else { // If not in caches, we allow the resource to be retrieved from the online network
+                console.log('file is not cached, fetching : ' + e.request.url)
+                return fetch(e.request)
+            }
+        })
+
+    )
+})
+
 //Installing 
 self.addEventListener('install', function (e){
     //Tells browser to wait until the work is complete before terminating service worker
@@ -39,26 +61,5 @@ self.addEventListener('activate', function (e) {
                 })
             )
         })
-    )
-})
-
-//Retrieve Information from Cache
-self.addEventListener('fetch', function(e) {
-    //logging URL of the requested resource
-    console.log('fetch request : ' + e.request.url)
-    //Intercep Fetch Request
-    e.respondWith(
-        //determine if the resource already exists in caches
-        caches.match(e.request).then(function (request) {
-            //if resource exists, log URL to console and return cached resource
-            if (request) {
-                console.log('responding with cache : ' + e.request.url)
-                return request
-            } else { // If not in caches, we allow the resource to be retrieved from the online network
-                console.log('file is not cached, fetching : ' + e.request.url)
-                return fetch(e.request)
-            }
-        })
-
     )
 })
