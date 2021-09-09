@@ -42,7 +42,7 @@ function saveRecord(record) {
 function uploadTransaction(){
     const transaction = db.transaction(['new_transaction'], 'readwrite');
 
-    const budgetObjectStore = transaction.objectionStore('new_transaction');
+    const budgetObjectStore = transaction.objectStore('new_transaction');
 
     const getAll = budgetObjectStore.getAll();
 
@@ -62,7 +62,7 @@ function uploadTransaction(){
                     throw new Error(serverResponse);
                 }
                 const transaction = db.transaction(['new_transaction'], 'readwrite');
-                const budgetObjectStore = transaction.onjectStore('new_transaction');
+                const budgetObjectStore = transaction.objectStore('new_transaction');
                 budgetObjectStore.clear();
 
                 alert('All saved transactions has been submitted!');
